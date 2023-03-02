@@ -1,2 +1,2 @@
 # flask-todo-app
-Simple Flask CRUD App
+a simple flask CRUD app
