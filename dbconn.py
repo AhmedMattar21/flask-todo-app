@@ -1,15 +1,23 @@
 import sqlite3
-
+import pymysql
 
 class conn:
     "DB Connection Handler with Sqlite3"
+    type = 'mysql'
 
-    def connect():
-        db_conn = sqlite3.connect("app.db")
+    def connect(type):
+        #if type == 'mysql':
+        try:
+            db_conn = pymysql.connect(host='mysql-db', user='root', password='ahmed1998', db='testdb')
+            print('Connect Successful')
+        except:
+            print('Database Connection')
+        #elif type == 'sqlite':
+        #    db_conn = sqlite3.connect("app.db")
         return db_conn
 
     def init_db():
-        db = conn.connect()
+        db = conn.connect(type)
         cr = db.cursor()
 
         file = open("init.sql", "r")
@@ -19,7 +27,7 @@ class conn:
         db.commit()
 
     def NonReturnQuery(sql):
-        db = conn.connect()
+        db = conn.connect(type)
         cr = db.cursor()
         csql = conn.clean_sql(sql)
         cr.execute(csql)
@@ -35,7 +43,7 @@ class conn:
         return cleansql
 
     def get_nextID(table, id):
-        db = conn.connect()
+        db = conn.connect(type)
         cr = db.cursor()
         try:
             cr.execute(f"SELECT MAX({id}) FROM {table} ")
@@ -47,7 +55,7 @@ class conn:
             return 1
 
     def returnQuery(sql):
-        db = conn.connect()
+        db = conn.connect(type)
         cr = db.cursor()
         try:
             cr.execute(sql)

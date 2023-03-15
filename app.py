@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect
 from datetime import datetime
-from DB_CONN import conn
+from dbconn import conn
 
 
 # GET ALL ACTIVE TASKS
@@ -79,7 +79,7 @@ def update_item(x):
 if __name__ == "__main__":
     # print(tasks[0][1])
     conn.init_db()
-    cr = conn.connect()
+    cr = conn.connect(conn.type)
     conn.get_nextID("tasks", "id")
     time = str.format(f"{datetime.now()}")
     print()

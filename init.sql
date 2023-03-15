@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS testdb;
+USE testdb;
 CREATE TABLE IF NOT EXISTS tasks(
         id integer primary key,
         task text,
