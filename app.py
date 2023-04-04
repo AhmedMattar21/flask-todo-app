@@ -5,8 +5,11 @@ from dbconn import conn
 
 # GET ALL ACTIVE TASKS
 def get_data():
+    
     data = conn.returnQuery("SELECT * FROM tasks where is_completed=0")
+
     return data
+    
 
 
 # GET ALL COMPLETED TASKS
@@ -77,10 +80,5 @@ def update_item(x):
 
 
 if __name__ == "__main__":
-    # print(tasks[0][1])
     conn.init_db()
-    cr = conn.connect(conn.type)
-    conn.get_nextID("tasks", "id")
-    time = str.format(f"{datetime.now()}")
-    print()
-    app.run(debug=True)
+    app.run(debug=False)

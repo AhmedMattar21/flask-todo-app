@@ -35,8 +35,8 @@
                 {%endfor%}
                 {%for i in done_tasks:%}
                 <tr class="done">
-                    <td>{{i[1]}}</td>
-                    <td>{{i[2]}}</td>
+                    <td><del>{{i[1]}}</del></td>
+                    <td><del>{{i[2]}}</del></td>
                     <td>
                         <a href="/update/{{i[0]}}"">Update</a>
                         <a href="/delete/{{i[0]}}">Delete</a>
