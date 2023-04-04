@@ -9,7 +9,7 @@ services:
           - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
 
   app:
-    image: flask-todo-app
+    image: m4tt4r/flask-todo-app
     container_name: flask-todo
     ports:
       - 5000:5000
